@@ -1,15 +1,17 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import LoadData from "../services/getApi";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { yellow, red } from "@mui/material/colors";
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 5vmin;
+  color: white;
 `;
 
 export default function Search() {
@@ -24,12 +26,22 @@ export default function Search() {
   return (
     <Container>
       <TextField
-        id="outlined-basic"
+        id="SearchField"
         label="username"
-        variant="outlined"
+        variant="filled"
+        fullWidth
         inputRef={valueRef}
+        style={{
+          backgroundColor: "white",
+          borderRadius: "5px",
+          margin: "2vmin",
+        }}
       />
-      <SearchIcon fontSize="large" onClick={handleAPICall} />
+      <SearchIcon
+        fontSize="large"
+        onClick={handleAPICall}
+        style={{ marginRight: "2vmin" }}
+      />
     </Container>
   );
 }
