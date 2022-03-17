@@ -38,7 +38,7 @@ export default function LabelInfo() {
 
       <FavoriteIcon
         sx={{ color: red[500] }}
-        style={{ marginTop: "20px", marginRight: "5px" }}
+        style={{ marginTop: "1.2rem", marginRight: "5px" }}
       />
       <FavoritesLabel onClick={handleOpen}>Favorites</FavoritesLabel>
       <Modal
@@ -46,7 +46,7 @@ export default function LabelInfo() {
         onClose={handleClose}
         sx={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
       >
-        <ModalContent />
+        <ModalContent/>
       </Modal>
     </ContainerRow>
   );

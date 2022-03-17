@@ -2,7 +2,7 @@ import { createStore } from "redux";
 import { combineReducers } from "redux";
 
 const INITIAL_STATE = [];
-const INITIAL_STATE_FAVORITES = JSON.parse(localStorage.getItem("favorites")) || [];
+const INITIAL_STATE_FAVORITES = [];
 
 function searchReducer(state = INITIAL_STATE, action) {
   switch (action.type) {

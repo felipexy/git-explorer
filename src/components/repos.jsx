@@ -30,17 +30,17 @@ const Title = styled.h3`
 
 export default function Repos({ repository }) {
   const dispatch = useDispatch();
-  const addFavorite = () => {
-    dispatch({ type: "CURRENT_FAVORITES", package: repository });
-    setIsFavorite(!isFavorite);
-  };
   const stored = JSON.parse(localStorage.getItem("favorites")) || [];
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+    dispatch({ type: "CURRENT_FAVORITES", package: repository });
+  };
   const [isFavorite, setIsFavorite] = useState(false);
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
-    setIsFavorite(false);
     stored.map((repo) => {
-      if (repo.id === repository.id) {
+      if (repo.name === repository.name) {
         setIsFavorite(true);
       }
     });
@@ -53,12 +53,12 @@ export default function Repos({ repository }) {
           {isFavorite ? (
             <FavoriteIcon
               sx={{ color: red[500], marginRight: "10px" }}
-              onClick={() => addFavorite()}
+              onClick={() => toggleFavorite()}
             />
           ) : (
             <FavoriteBorderIcon
               sx={{ marginRight: "10px" }}
-              onClick={() => addFavorite()}
+              onClick={() => toggleFavorite()}
             />
           )}
           <Title>{repository.name}</Title>
