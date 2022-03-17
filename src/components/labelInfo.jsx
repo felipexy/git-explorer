@@ -26,7 +26,6 @@ export default function LabelInfo() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   return (
     <ContainerRow>
       <ContainerColumn>
@@ -46,7 +45,7 @@ export default function LabelInfo() {
         onClose={handleClose}
         sx={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
       >
-        <ModalContent/>
+        <ModalContent />
       </Modal>
     </ContainerRow>
   );

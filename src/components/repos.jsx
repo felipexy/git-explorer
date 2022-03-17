@@ -36,7 +36,6 @@ export default function Repos({ repository }) {
     dispatch({ type: "CURRENT_FAVORITES", package: repository });
   };
   const [isFavorite, setIsFavorite] = useState(false);
-  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     stored.map((repo) => {
