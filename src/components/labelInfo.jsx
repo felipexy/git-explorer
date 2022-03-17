@@ -21,11 +21,15 @@ const ContainerColumn = styled.div`
 
 const FavoritesLabel = styled.h1``;
 
-export default function LabelInfo() {
+export default function LabelInfo({state}) {
   const searchResultRedux = useSelector((state) => state.search);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    debugger
+    setOpen(false);
+    state(true);
+  };
   return (
     <ContainerRow>
       <ContainerColumn>
