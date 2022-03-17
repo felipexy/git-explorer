@@ -31,7 +31,7 @@ export default function LabelInfo() {
       <ContainerColumn>
         <h1>GIT Repositories</h1>
         {searchResultRedux.length > 0 && (
-          <h3>{searchResultRedux.length} Results</h3>
+          <h2>{searchResultRedux.length} Results</h2>
         )}
       </ContainerColumn>
 
