@@ -41,7 +41,7 @@ export default function LabelInfo({state}) {
 
       <FavoriteIcon
         sx={{ color: red[500] }}
-        style={{ marginTop: "1.2rem", marginRight: "5px" }}
+        style={{ marginTop: "2vh", marginRight: "5px" }}
       />
       <FavoritesLabel onClick={handleOpen}>Favorites</FavoritesLabel>
       <Modal
