@@ -2,26 +2,43 @@ import { createStore } from "redux";
 import { combineReducers } from "redux";
 
 const INITIAL_STATE = [];
-const INITIAL_STATE_FAVORITES = [];
+const INITIAL_STATE_FAVORITES = JSON.parse(localStorage.getItem("favorites")) || [];
 
 function searchReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case "CURRENT_SEARCH":
+      state = [];
       state.push(action.package);
       return state[0];
     default:
       return state;
   }
 }
+let alreadyExists;
+
+const checkFavoritesArray = (favoritesArray, payload) => {
+  alreadyExists = false;
+  favoritesArray.map((repo) => {
+    if (repo.id === payload.id) {
+      alreadyExists = true;
+    }
+  });
+};
 
 function favoritesReducer(state = INITIAL_STATE_FAVORITES, action) {
   switch (action.type) {
     case "CURRENT_FAVORITES":
-      if(!state.includes(action.package)){
+      checkFavoritesArray(state, action.package);
+      if (!alreadyExists) {
         state.push(action.package);
+        localStorage.setItem("favorites", JSON.stringify(state));
       } else {
-        const deleteFavorite = state.filter(favoriteItem => favoriteItem !== action.package)
-        state = deleteFavorite;
+        state.map((repo) => {
+          if (repo.id === action.package.id) {
+            state.splice(state.indexOf(repo), 1);
+            localStorage.setItem("favorites", JSON.stringify(state));
+          }
+        });
       }
       return state;
     default:

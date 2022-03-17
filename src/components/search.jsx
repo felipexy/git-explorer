@@ -4,13 +4,13 @@ import TextField from "@mui/material/TextField";
 import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch } from "react-redux";
-import { yellow, red } from "@mui/material/colors";
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 5vmin;
+  position: relative;
   color: white;
 `;
 
@@ -40,7 +40,7 @@ export default function Search() {
       <SearchIcon
         fontSize="large"
         onClick={handleAPICall}
-        style={{ marginRight: "2vmin" }}
+        style={{ marginRight: "20px" }}
       />
     </Container>
   );

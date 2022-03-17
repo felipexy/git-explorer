@@ -1,26 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { red } from "@mui/material/colors";
+import Modal from "@mui/material/Modal";
+import ModalContent from "./modalContent";
 
 const ContainerRow = styled.div`
   display: flex;
   flex-direction: row;
   margin: 2vmin;
   color: white;
+  font-size: 0.7rem;
 `;
 const ContainerColumn = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90vmin;
-  float: left;
+  width: 86.7vw;
 `;
 
 const FavoritesLabel = styled.h1``;
 
 export default function LabelInfo() {
   const searchResultRedux = useSelector((state) => state.search);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <ContainerRow>
@@ -33,9 +38,16 @@ export default function LabelInfo() {
 
       <FavoriteIcon
         sx={{ color: red[500] }}
-        style={{ marginTop: "34px", marginRight: "5px" }}
+        style={{ marginTop: "20px", marginRight: "5px" }}
       />
-      <FavoritesLabel>See Favorites</FavoritesLabel>
+      <FavoritesLabel onClick={handleOpen}>Favorites</FavoritesLabel>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        sx={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
+      >
+        <ModalContent />
+      </Modal>
     </ContainerRow>
   );
 }
